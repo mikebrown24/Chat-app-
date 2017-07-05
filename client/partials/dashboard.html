@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#!/dashboard"><img src="favicon.ico" alt="mIRC" class="small"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
+      <ul class="nav navbar-nav navbar-right">
+        <span>Welcome <span ng-bind="currentUser.username"></span>!
+        <input class="signout" type="button" value="Sign Out" ng-click="logout()">
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="box">
+  <table>
+    <tr>
+      <th>Channel </th>
+      <th> Creator </th>
+    </tr>
+    <tr ng-repeat="topic in topics | filter:filter_channels">
+      <td><a href="#!/topics/{{topic._id}}">#{{topic.title}}</a></td>
+      <td>
+        <img src="./images/8bit.jpg" alt="avatar" class="small circle">
+        <a href="#!/users/{{topic._author._id}}">{{topic._author.username}}</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="box">
+  <form ng-submit="addTopic(currentUser.id)">
+    <label for="" class="welcome">Add a new Channel</label>
+    <label for="category">Category:</label>
+    <select id="textbackground" name="category" ng-model="newTopic._category" class="control">
+      <option ng-repeat="category in categories" value="{{category._id}}">{{category.name}}</option>
+    </select>
+    <input type="hidden" name="user" ng-model="newTopic._author" value="{{currentUser.id}}">
+    <label for="title">Channel Name:</label>
+    <input id="textbackground" type="text" name="title" ng-model="newTopic.title">
+    <label for="description">Description:</label>
+    <textarea name="description" class="text-box" ng-model="newTopic.description"></textarea>
+    <label for="button"></label>
+    <input type="submit" class="button" value="Submit">
+  </form>
+</div>

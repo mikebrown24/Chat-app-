@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#!/dashboard"><img src="favicon.ico" alt="mIRC" class="small"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
+      <ul class="nav navbar-nav navbar-right">
+        <span class="welcome">Welcome <span ng-bind="currentUser.username"></span>!
+        <input class="signout" type="button" value="Sign Out" ng-click="logout()">
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="box">
+  <!--
+  <h5>
+    <img src="./images/8bit.jpg" alt="avatar" class="small circle">
+    <a href="#!/users/{{topic._author._id}}">{{topic._author.username}}</a> created a new channel:
+  </h5>
+  -->
+  <a href="#!/dashboard">channels</a>
+  <label for="" class="welcome">#{{topic.title}}</label>
+  <label for="">{{topic.description}}</label>
+  <div id="allposts">
+    <div class="" ng-repeat="post in topic.posts">
+        <a class="white" href="#!/users/{{topic._author._id}}">
+          <img src="./images/8bit.jpg" alt="avatar" class="medium circle">
+        </a>
+        <div class="tile">
+        <a class="white" href="#!/users/{{topic._author._id}}">
+          {{post.createdAt|date: "M/dd HH:mm"}} {{post._author.username}}
+        </a><br>
+        <span class="violet">"{{post.postText}}"</span>
+
+        </div>
+    </div>
+  </div>
+  <div class="">
+    <form enctype="multipart/form-data" ng-submit="addPost(currentUser.id, topic._id)">
+      <label>Post here...</label>
+      <textarea name="name" class="text-box" ng-model="newPost.postText"></textarea>
+      <input type="submit" class="button" name="" value="Post">
+    </form>
+  </div>
+</div>

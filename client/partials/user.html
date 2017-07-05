@@ -1,0 +1,49 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/#!/dashboard"><img src="favicon.ico" alt="mIRC" class="small"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
+            <ul class="nav navbar-nav navbar-right">
+                <a href="#!/dashboard">channels</a> |
+                <span>Welcome <span ng-bind="user.username"></span>!
+                <input class="signout" type="button" value="Sign Out" ng-click="logout()">
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="box">
+    
+    <br>
+    <img src="./images/8bit.jpg" alt="avatar">
+    <br>
+    <br>
+    <h5 class="labels"> <u> Username : </u> </h5>
+    <p ng-bind="user.username"></p>
+    <hr>
+    <h5 class="labels"> <u> Email : </u> </h5>
+    <a href="" ng-bind="user.email"> </a>
+    <hr>
+    <h5 class="labels"> <u> Status : </u> </h5>
+    <p class="status">Online</p>
+    <hr>
+    <h5 class="labels"> <u> What I do : </u> </h5>
+    <p> Student </p>
+    <hr>
+    <h5 class="labels"> <u> Time and Date: </u> </h5>
+    <p id="date"></p>
+    <script>
+        document.getElementById("date").innerHTML = Date();
+    </script>
+    <hr>
+    <h5 class="labels"> <u> Phone: </u> </h5>
+        <p> <a href=""> 1-***-***-**** </a> </p>
+    <hr>
+    <h5 class="labels"> <u> Channels I am a part of (or own): </u> </h5>
+    <ul style="list-style: none">
+        <li  ng-repeat="topic in user.topics track by $index">
+           {{topic.title}}
+        </li>
+    </ul>
+</div>
